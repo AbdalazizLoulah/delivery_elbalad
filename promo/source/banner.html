@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>ديليفاري البلد — بانر دعائي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    direction: rtl;
+  }
+
+  body {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+    background: #0A4F42;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .banner {
+    position: relative;
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    background:
+      radial-gradient(900px 620px at 10% 6%, rgba(255,255,255,.10), transparent 62%),
+      radial-gradient(820px 720px at 82% 104%, rgba(245,165,36,.20), transparent 64%),
+      linear-gradient(135deg, #0C5A4B 0%, #0F6E5C 46%, #0A4F42 100%);
+  }
+
+  /* حلقات خفيفة في الخلفية */
+  .ring { position: absolute; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.07); }
+  .ring.r1 { width: 980px; height: 980px; left: -300px; top: -340px; }
+  .ring.r2 { width: 640px; height: 640px; left: -130px; top: -170px; border-color: rgba(255,255,255,.05); }
+  .ring.r3 { width: 760px; height: 760px; right: -260px; bottom: -420px; border-color: rgba(255,255,255,.05); }
+
+  /* خط مسار التوصيل */
+  .route { position: absolute; left: 0; top: 0; z-index: 0; }
+
+  .glow {
+    position: absolute;
+    left: 210px;
+    top: 170px;
+    width: 560px;
+    height: 560px;
+    background: radial-gradient(circle, rgba(245,165,36,.26), transparent 66%);
+    filter: blur(14px);
+    z-index: 0;
+  }
+
+  /* ---------------- النص ---------------- */
+  .copy {
+    position: absolute;
+    top: 58px;
+    right: 72px;
+    width: 648px;
+    z-index: 5;
+    text-align: right;
+  }
+
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .brand-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 17px;
+    box-shadow: 0 12px 26px rgba(0,0,0,.28);
+    flex: 0 0 auto;
+  }
+  .brand-name { font-size: 26px; font-weight: 900; letter-spacing: -.4px; line-height: 1.1; }
+  .brand-sub { font-size: 14px; color: rgba(255,255,255,.62); margin-top: 3px; font-weight: 600; }
+
+  h1 {
+    margin-top: 30px;
+    font-size: 62px;
+    line-height: 1.28;
+    font-weight: 900;
+    letter-spacing: -1.2px;
+    text-shadow: 0 6px 30px rgba(0,0,0,.18);
+  }
+  h1 .accent { color: #F7B23B; position: relative; }
+  h1 .accent::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    bottom: 2px;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(245,165,36,.18);
+    z-index: -1;
+  }
+
+  .lead {
+    margin-top: 20px;
+    font-size: 20px;
+    line-height: 1.9;
+    font-weight: 600;
+    color: rgba(255,255,255,.80);
+    max-width: 610px;
+  }
+
+  .features {
+    margin-top: 26px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    background: rgba(255,255,255,.09);
+    border: 1px solid rgba(255,255,255,.13);
+    font-size: 16.5px;
+    font-weight: 700;
+    color: rgba(255,255,255,.94);
+    backdrop-filter: blur(4px);
+  }
+  .feature.wide { grid-column: span 2; }
+  .feature svg { width: 22px; height: 22px; flex: 0 0 auto; color: #F7B23B; }
+
+  .cta-row { margin-top: 30px; display: flex; align-items: center; gap: 20px; }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 17px 34px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #FFC25C 0%, #F5A524 100%);
+    color: #083A31;
+    font-size: 23px;
+    font-weight: 900;
+    box-shadow: 0 18px 40px rgba(245,165,36,.30), 0 4px 12px rgba(0,0,0,.18);
+  }
+  .cta svg { width: 26px; height: 26px; }
+
+  .download-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 13px;
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(255,255,255,.62);
+  }
+  .download-note svg { width: 19px; height: 19px; color: rgba(255,255,255,.72); }
+  .download-note b { color: rgba(255,255,255,.9); font-weight: 800; }
+
+  .place {
+    position: absolute;
+    bottom: 40px;
+    right: 76px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(255,255,255,.55);
+    z-index: 5;
+  }
+  .place svg { width: 18px; height: 18px; color: rgba(255,255,255,.55); }
+
+  /* ---------------- الموبايلات ---------------- */
+  .phones { position: absolute; left: 36px; top: 0; width: 860px; height: 900px; z-index: 2; }
+
+  .phone {
+    position: absolute;
+    background: #0A0E0D;
+    border: 9px solid #0A0E0D;
+    border-radius: 42px;
+    box-shadow: 0 55px 100px rgba(0,0,0,.46), 0 14px 34px rgba(0,0,0,.32);
+    overflow: hidden;
+  }
+  .phone img { display: block; width: 100%; height: auto; border-radius: 33px; }
+  .phone::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 33px;
+    background: linear-gradient(135deg, rgba(255,255,255,.13) 0%, rgba(255,255,255,0) 32%, rgba(255,255,255,0) 68%, rgba(255,255,255,.05) 100%);
+    pointer-events: none;
+  }
+
+  .phone.home     { left: 22px;  top: 208px; width: 272px; transform: rotate(-7deg); z-index: 1; }
+  .phone.orders   { left: 534px; top: 246px; width: 238px; transform: rotate(7deg);  z-index: 1; }
+  .phone.tracking { left: 246px; top: 86px;  width: 312px; transform: rotate(1.6deg); z-index: 3; }
+</style>
+</head>
+<body>
+  <div class="banner">
+    <div class="ring r1"></div>
+    <div class="ring r2"></div>
+    <div class="ring r3"></div>
+
+    <svg class="route" width="900" height="900" viewBox="0 0 900 900" fill="none">
+      <path d="M96 792 C 250 646, 196 470, 350 356 S 636 232, 790 116"
+            stroke="rgba(255,255,255,.13)" stroke-width="3"
+            stroke-dasharray="2 13" stroke-linecap="round"/>
+      <circle cx="96" cy="792" r="7" fill="#F5A524"/>
+      <circle cx="96" cy="792" r="15" stroke="rgba(245,165,36,.35)" stroke-width="3"/>
+      <circle cx="790" cy="116" r="6" fill="rgba(255,255,255,.75)"/>
+    </svg>
+
+    <div class="glow"></div>
+
+    <div class="copy">
+      <div class="brand">
+        <img class="brand-icon" src="assets/app_icon.png" alt="">
+        <div>
+          <div class="brand-name">ديليفاري البلد</div>
+          <div class="brand-sub">توصيل من قلب البلد لباب بيتك</div>
+        </div>
+      </div>
+
+      <h1>كل طلباتك من البلد<br><span class="accent">لحد باب البيت</span></h1>
+
+      <p class="lead">
+        بقالة، فاكهة وخضار، مخبوزات ومشروبات… من المتاجر القريبة منك،
+        مع توصيل سريع وتتبع لحظي على الخريطة.
+      </p>
+
+      <div class="features">
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>تتبع الطيار لحظة بلحظة</span>
+        </div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="13" rx="3"/><path d="M2.5 10h19"/><circle cx="17" cy="14.5" r="1.4" fill="currentColor" stroke="none"/></svg>
+          <span>الدفع عند الاستلام</span>
+        </div>
+        <div class="feature wide">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>مشتري • بائع • طيار — كل الأدوار في تطبيق واحد</span>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <div class="cta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+          حمّل التطبيق دلوقتي
+        </div>
+      </div>
+      <div class="download-note">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.48l1.84-3.18a.64.64 0 0 0-.26-.85.63.63 0 0 0-.83.22l-1.88 3.24a11.46 11.46 0 0 0-8.94 0L5.65 5.67a.63.63 0 0 0-.87-.2.64.64 0 0 0-.22.83L6.4 9.48A10.78 10.78 0 0 0 1 18h22a10.78 10.78 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg>
+        متوفر على <b>أندرويد</b> — اطلب دلوقتي ووصلك لحد البيت
+      </div>
+    </div>
+
+    <div class="phones">
+      <div class="phone home"><img src="assets/home.png" alt=""></div>
+      <div class="phone tracking"><img src="assets/tracking.png" alt=""></div>
+      <div class="phone orders"><img src="assets/orders.png" alt=""></div>
+    </div>
+
+    <div class="place">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      شبين الكوم • المنوفية
+    </div>
+  </div>
+</body>
+</html>

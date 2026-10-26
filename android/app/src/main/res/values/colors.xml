@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ألوان الهوية: نفس أخضر التطبيق AppColors.primary -->
+<resources>
+    <color name="splash_background">#FF0F6E5C</color>
+    <color name="ic_launcher_background">#FFFFFFFF</color>
+</resources>
